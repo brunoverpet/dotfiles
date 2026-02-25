@@ -1,1 +1,33 @@
-/Users/brunoverpet/.config/skhd/skhdrc
+#change window focus within space
+alt - j : yabai -m window --focus south
+alt - k : yabai -m window --focus north
+alt - h : yabai -m window --focus west
+alt - l : yabai -m window --focus east
+
+# change focus to display left and right
+alt - s: yabai -m display --focus west
+alt - g: yabai -m display --focus east
+
+alt - z : yabai -m window --toggle zoom-fullscreen
+
+alt - f : yabai -m window --toggle float
+
+
+# Moving windows
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west 
+shift + alt - l : yabai -m window --swap east
+
+ctrl + alt - j : yabai -m window --warp south
+ctrl + alt - k : yabai -m window --warp north
+ctrl + alt - h : yabai -m window --warp west 
+ctrl + alt - l : yabai -m window --warp east
+
+# move window to left and right
+shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
+shift + alt - g : yabai -m window --display east; yabai -m display --focus east;
+
+# Apps shortcut
+alt - space: open -n "/Applications/Ghostty.app"
+alt - return : open "/Applications/Arc.app"

@@ -24,6 +24,13 @@ ctrl + alt - k : yabai -m window --warp north
 ctrl + alt - h : yabai -m window --warp west 
 ctrl + alt - l : yabai -m window --warp east
 
+ctrl + alt - z : yabai -m window --toggle zoom-parent; yabai -m space --balance
+ctrl + alt - b : yabai -m space --layout bsp; yabai -m space --balance
+
+# Resize horizontal
+ctrl + shift + alt - h : yabai -m window --resize left:-50:0 || yabai -m window --resize right:-50:0
+ctrl + shift + alt - l : yabai -m window --resize right:50:0 || yabai -m window --resize left:50:0
+
 # move window to left and right
 shift + alt - s : yabai -m window --display west; yabai -m display --focus west;
 shift + alt - g : yabai -m window --display east; yabai -m display --focus east;

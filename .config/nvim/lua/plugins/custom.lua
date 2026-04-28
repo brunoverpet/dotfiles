@@ -65,23 +65,28 @@ return {
       explorer = {
         exclude = { ".git" },
         include = { ".env" },
+
+        actions = {
+          terminal = false,
+        },
       },
       terminal = { enabled = false },
     },
     keys = {
-      { "<C-t", false },
+      { "<C-t>", false },
     },
   },
   {
     "akinsho/toggleterm.nvim",
     version = "*",
-    keys = { { "<C-t>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" } },
+    event = "VeryLazy",
+    keys = { { "<C-:>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" } },
     opts = {
-      open_mapping = [[<C-t>]],
+      open_mapping = [[<C-:>]],
       direction = "horizontal",
       size = 15,
       shade_terminals = false,
-      border = "top", -- le petit trait fin comme sur la capture
+      border = "top",
       highlights = {
         Normal = { link = "Normal" },
         NormalFloat = { link = "Normal" },
@@ -90,6 +95,31 @@ return {
       start_in_insert = true,
       close_on_exit = true,
     },
+    config = function(_, opts)
+      require("toggleterm").setup(opts)
+      local Terminal = require("toggleterm.terminal").Terminal
+      local claude = Terminal:new({
+        cmd = "claude",
+        direction = "float",
+        float_opts = {
+          border = "rounded",
+          width = math.floor(vim.o.columns * 0.70), -- moins large
+          height = math.floor(vim.o.lines * 0.70), -- moins haut
+          winblend = 5,
+        },
+        hidden = true,
+        on_open = function(term)
+          -- toggle depuis le terminal avec F4
+          vim.keymap.set("t", "<leader>cl", function()
+            term:toggle()
+          end, { buffer = term.bufnr })
+        end,
+      })
+
+      vim.keymap.set("n", "<leader>cl", function()
+        claude:toggle()
+      end, { desc = "Toggle Claude" })
+    end,
   },
   {
     "folke/noice.nvim",

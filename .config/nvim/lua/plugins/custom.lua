@@ -55,22 +55,59 @@ return {
     "akinsho/bufferline.nvim",
     enabled = false,
   },
+  -- {
+  --   "folke/snacks.nvim",
+  --   opts = {
+  --     picker = {
+  --       hidden = true, -- affiche les dotfiles
+  --       ignored = true,
+  --     },
+  --     explorer = {
+  --       exclude = { ".git" },
+  --       include = { ".env" },
+  --
+  --       actions = {
+  --         terminal = false,
+  --       },
+  --     },
+  --     terminal = { enabled = false },
+  --   },
+  --   keys = {
+  --     { "<C-t>", false },
+  --   },
+  -- },
   {
     "folke/snacks.nvim",
     opts = {
       picker = {
-        hidden = true, -- affiche les dotfiles
+        hidden = true,
         ignored = true,
       },
       explorer = {
         exclude = { ".git" },
         include = { ".env" },
-
-        actions = {
-          terminal = false,
+      },
+      terminal = {
+        enabled = true,
+        win = {
+          position = "bottom",
+          height = 0.3,
+          border = "top",
+          wo = {
+            winbar = "",
+            -- winblend = 10,
+            winhighlight = "Normal:Normal,NormalFloat:Normal",
+          },
+          bo = {
+            filetype = "snacks_terminal",
+          },
         },
       },
-      terminal = { enabled = false },
+      lazygit = {
+        win = {
+          style = "lazygit",
+        },
+      },
     },
     keys = {
       { "<C-t>", false },
@@ -78,11 +115,12 @@ return {
   },
   {
     "akinsho/toggleterm.nvim",
+    enabled = false,
     version = "*",
-    event = "VeryLazy",
-    keys = { { "<C-:>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" } },
+    lazy = false,
+    keys = { { "<C-t>", "<cmd>ToggleTerm<cr>", desc = "Toggle Terminal" } },
     opts = {
-      open_mapping = [[<C-:>]],
+      open_mapping = [[<C-t>]],
       direction = "horizontal",
       size = 15,
       shade_terminals = false,

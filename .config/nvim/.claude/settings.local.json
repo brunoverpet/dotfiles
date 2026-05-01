@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rsync -av --delete ~/.config/nvim/ /volumes/SSD_EXTERNE/Github/dotfiles/.config/nvim/)",
+      "Bash(rsync -av --delete ~/.config/yabai/ /volumes/SSD_EXTERNE/Github/dotfiles/.config/yabai/)",
+      "Bash(rsync -av --delete ~/.config/skhd/ /volumes/SSD_EXTERNE/Github/dotfiles/.config/skhd/)",
+      "Bash(rsync -av --delete ~/.config/ghostty/ /volumes/SSD_EXTERNE/Github/dotfiles/.config/ghostty/)"
+    ]
+  }
+}

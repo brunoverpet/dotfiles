@@ -1,6 +1,1 @@
-theme = Gruvbox Material Light
-font-family = JetBrainsMono Nerd Font Mono
-font-size=16
-macos-titlebar-style = hidden 
-window-padding-y = 12 
-window-padding-x = 12 
+keybind = ctrl+t=text:\x14

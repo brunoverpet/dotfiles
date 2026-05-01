@@ -88,11 +88,11 @@ end, { desc = "Toggle Claude" })
 vim.keymap.set("t", "<leader>cl", function()
   Snacks.terminal.toggle("claude", {
     win = {
-      position = "right",
-      border = "left",
-      width = 0.30,
-      --height = 0.70,
-      wo = { winbar = "" },
+      position = "float",
+      width = 0.9,
+      height = 0.9,
+      border = "rounded",
+      -- wo = { winbar = "" },
     },
   })
 end, { desc = "Toggle Claude" })

@@ -30,20 +30,11 @@ return {
             },
           },
         },
-        ts_ls = {
+        vtsls = {
           settings = {
             typescript = {
               preferences = {
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
-                includeCompletionsWithSnippetText = false,
-                includeAutomaticOptionalChainCompletions = true,
-              },
-            },
-            javascript = {
-              preferences = {
-                includeCompletionsForModuleExports = false,
-                includeCompletionsForImportStatements = false,
+                importModuleSpecifier = "non-relative",
               },
             },
           },

@@ -22,6 +22,7 @@ end, { expr = true, buffer = false })
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
+    vim.schedule(function()
     vim.keymap.set("n", "gr", function()
       local make_entry = require("telescope.make_entry")
       local devicons = require("nvim-web-devicons")
@@ -53,6 +54,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end, { buffer = args.buf, desc = "Goto References (with icons)" })
+    end) -- vim.schedule
   end,
 })
 

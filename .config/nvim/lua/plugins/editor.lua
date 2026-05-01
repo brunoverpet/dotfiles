@@ -67,7 +67,7 @@ return {
     end,
   },
   {
-    "nvim-mini/mini.nvim",
+    "echasnovski/mini.surround",
     version = "*",
     config = function()
       require("mini.surround").setup({

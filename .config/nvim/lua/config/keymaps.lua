@@ -20,10 +20,6 @@ vim.keymap.set("i", "<CR>", function()
   return "<CR>"
 end, { expr = true, buffer = false })
 
-vim.keymap.set("n", "gr", function()
-  vim.lsp.buf.references()
-end, { desc = "References" })
-
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     vim.keymap.set("n", "gr", function()
@@ -98,5 +94,7 @@ vim.keymap.set("t", "<leader>cl", function()
 end, { desc = "Toggle Claude" })
 
 vim.keymap.set("n", "<leader>gg", function()
-  Snacks.lazygit({ win = { position = "float", width = 0.9, height = 0.9, border = "rounded" } })
+  Snacks.lazygit({ cwd = LazyVim.root.git(), win = { position = "float", width = 0.9, height = 0.9, border = "rounded" } })
 end, { desc = "Lazygit" })
+
+vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })

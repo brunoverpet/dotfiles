@@ -69,26 +69,14 @@ end
 vim.keymap.set("n", "<C-t>", toggle_term, { desc = "Toggle Terminal" })
 vim.keymap.set("t", "<C-t>", toggle_term, { desc = "Toggle Terminal" })
 
-vim.keymap.set("n", "<leader>ct", function()
-  Snacks.terminal.toggle("claude", {
-    win = {
-      position = "right",
-      border = "left",
-      width = 0.30,
-      -- height = 0.70,
-      wo = { winbar = "" },
-    },
-  })
-end, { desc = "Toggle Claude" })
-
-vim.keymap.set("t", "<leader>ct", function()
+vim.keymap.set({ "n", "t" }, "<leader>ct", function()
   Snacks.terminal.toggle("claude", {
     win = {
       position = "float",
       width = 0.9,
       height = 0.9,
       border = "rounded",
-      -- wo = { winbar = "" },
+      wo = { winbar = "" },
     },
   })
 end, { desc = "Toggle Claude" })

@@ -1,5 +1,9 @@
 return {
   {
+    "akinsho/bufferline.nvim",
+    enabled = false,
+  },
+  {
     "utilyre/barbecue.nvim",
     dependencies = {
       "SmiteshP/nvim-navic",

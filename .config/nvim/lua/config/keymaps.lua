@@ -20,44 +20,6 @@ vim.keymap.set("i", "<CR>", function()
   return "<CR>"
 end, { expr = true, buffer = false })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    vim.schedule(function()
-    vim.keymap.set("n", "gr", function()
-      local make_entry = require("telescope.make_entry")
-      local devicons = require("nvim-web-devicons")
-      local entry_display = require("telescope.pickers.entry_display")
-      local default_maker = make_entry.gen_from_quickfix()
-
-      require("telescope.builtin").lsp_references({
-        entry_maker = function(line)
-          local entry = default_maker(line)
-          if not entry or entry.filename:find("node_modules", 1, true) then
-            return nil
-          end
-          local icon, icon_hl = devicons.get_icon(entry.filename, nil, { default = true })
-          entry.display = function(ent)
-            local displayer = entry_display.create({
-              separator = " ",
-              items = { { width = 2 }, { width = 45 }, { remaining = true } },
-            })
-            local abs = vim.fn.fnamemodify(ent.filename, ":p")
-            local root = LazyVim.root() .. "/"
-            local relative = abs:sub(1, #root) == root and abs:sub(#root + 1) or vim.fn.fnamemodify(abs, ":t")
-            return displayer({
-              { icon, icon_hl },
-              { relative .. ":" .. ent.lnum, "TelescopeResultsIdentifier" },
-              ent.text,
-            })
-          end
-          return entry
-        end,
-      })
-    end, { buffer = args.buf, desc = "Goto References (with icons)" })
-    end) -- vim.schedule
-  end,
-})
-
 local function toggle_term()
   Snacks.terminal.toggle()
 end

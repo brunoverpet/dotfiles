@@ -58,6 +58,13 @@ return {
           preview_width = 0.6,
         },
       })
+      opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
+        lsp_references = {
+          path_display = { "smart" },
+          file_ignore_patterns = { "node_modules" },
+          show_line = true,
+        },
+      })
     end,
   },
   {

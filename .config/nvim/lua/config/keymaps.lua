@@ -40,7 +40,32 @@ vim.keymap.set({ "n", "t" }, "<leader>ct", function()
 end, { desc = "Toggle Claude" })
 
 vim.keymap.set("n", "<leader>gg", function()
-  Snacks.lazygit({ cwd = LazyVim.root.git(), win = { position = "float", width = 0.9, height = 0.9, border = "rounded" } })
+  Snacks.lazygit({
+    cwd = LazyVim.root.git(),
+    win = { position = "float", width = 0.9, height = 0.9, border = "rounded" },
+  })
 end, { desc = "Lazygit" })
 
 vim.keymap.set("n", "<leader>lr", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
+
+vim.keymap.set("n", "<leader>cu", function()
+  vim.lsp.buf.code_action({
+    apply = true,
+    context = {
+      only = {
+        "source.removeUnused.ts" --[[@as any]],
+      },
+      diagnostics = {},
+    },
+  })
+end, { desc = "Remove Unused Imports" })
+
+vim.keymap.set("n", "<leader>ci", function()
+  vim.lsp.buf.code_action({
+    filter = function(action)
+      vim.notify(action.title, vim.log.levels.INFO)
+      return false -- n'applique rien, juste log
+    end,
+    context = { diagnostics = {} },
+  })
+end, { desc = "Debug code actions" })

@@ -13,7 +13,10 @@ return {
         hidden = true,
         ignored = true,
         layout = { preset = "telescope" },
+        exclude = { "node_modules", ".git" },
         sources = {
+          files = { hidden = true, ignored = true },
+          smart = { hidden = true, ignored = true },
           lsp_references = {
             show_line = false,
           },
@@ -62,6 +65,16 @@ return {
           width = 0.9,
           height = 0.85,
           preview_width = 0.6,
+        },
+        -- Ignore node_modules et le dossier git même si on cherche dans les fichiers masqués
+        file_ignore_patterns = { "node_modules/", "%.git/" },
+      })
+
+      -- Force la recherche à inclure les fichiers cachés (.env) et ignorés dans le picker principal
+      opts.pickers = vim.tbl_deep_extend("force", opts.pickers or {}, {
+        find_files = {
+          hidden = true,
+          no_ignore = true,
         },
       })
     end,

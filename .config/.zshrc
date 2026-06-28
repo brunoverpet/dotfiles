@@ -8,8 +8,14 @@ plugins=(
 	docker
 	zsh-autosuggestions
 	zsh-syntax-highlighting
+	zsh-vi-mode
 )
 source $ZSH/oh-my-zsh.sh
+
+zvm_after_init() {
+  bindkey -M vicmd 'k' history-beginning-search-backward
+  bindkey -M vicmd 'j' history-beginning-search-forward
+}
 
 export HOMEBREW_NO_ENV_HINTS=1
 
@@ -29,6 +35,8 @@ ssh-add --apple-use-keychain ~/.ssh/id_ed25519 &>/dev/null
 #  Aliases
 # =========================
 alias github="cd /Volumes/SSD_EXTERNE/Github/"
+alias eject-ssd='lsof | grep /Volumes/SSD_EXTERNE | awk "{print \$2}" | sort -u | xargs kill -15 2>/dev/null; sleep 3; lsof | grep /Volumes/SSD_EXTERNE | awk "{print \$2}" | sort -u | xargs kill -9 2>/dev/null; sleep 1 && diskutil eject /Volumes/SSD_EXTERNE && echo "SSD éjecté"'
+alias dev='~/.tmux/new-project.sh'
 
 # =========================
 #  Editor & Tools
@@ -54,3 +62,4 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+export PATH="$HOME/.local/bin:$PATH"

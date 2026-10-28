@@ -21,3 +21,7 @@ yabai -m config mouse_action2 resize  # clic droit + modifier = redimensionner
 yabai -m mouse_drop_action swap
 
 yabai -m rule --add app="Spotify" manage=off
+
+# Picture-in-Picture Zen & Firefox en mode flottant
+yabai -m rule --add app="^Zen$" title="^Picture-in-Picture$" manage=off
+yabai -m rule --add app="^Firefox.*$" title="^Picture-in-Picture$" manage=off
